@@ -23,7 +23,7 @@ class Validation:
     
     def is_valid_subscription_data(self, data):
         return (
-            data['url'] and
+            bool(data['url']) and
             isinstance(data['url'], str) and
             bool(data['event_types']) and
             len(data['event_types']) > 0
