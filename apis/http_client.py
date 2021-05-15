@@ -7,7 +7,7 @@ MAX_TIMEOUT = 5
 class HttpClient:
     def __init__(self, api_key):
         self.headers = {
-            "Authorization": api_key,
+            "x-api-key": api_key,
             "Content-Type": "application/json",
         }
   

@@ -6,7 +6,7 @@ from components.subscription import Subscription
 from components.event import Event
 from components.message import Message
 
-class CaptainHook:
+class Tacklebox:
     def __init__(self, api_key, base_url):
         config = {
             'api_key': api_key,
@@ -22,4 +22,3 @@ class CaptainHook:
         self.subscription = Subscription(config)
         self.event = Event(config)
         self.message = Message(config)
-
