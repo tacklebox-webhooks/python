@@ -1,3 +1,5 @@
 __pycache__
 .*.py
 build/
+dist/
+tacklebox_webhooks.egg-info/
