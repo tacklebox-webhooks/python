@@ -1,6 +1,3 @@
-import sys
-sys.path.append("..")
-
 from apis.service_api import ServiceApi
 
 class Service:

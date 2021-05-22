@@ -1,6 +1,3 @@
-import sys
-sys.path.append("..")
-
 from apis.message_api import MessageApi
 
 class Message:

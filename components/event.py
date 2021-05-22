@@ -1,6 +1,3 @@
-import sys
-sys.path.append("..")
-
 from apis.event_api import EventApi
 
 class Event:

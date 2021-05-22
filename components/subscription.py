@@ -1,6 +1,3 @@
-import sys
-sys.path.append("..")
-
 from apis.subscription_api import SubscriptionApi
 
 class Subscription:
