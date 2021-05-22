@@ -5,12 +5,11 @@ from .http_client import HttpClient
 class ServiceApi:
     def __init__(self, config):
         self.base_url = config['base_url']
-        self.stage = config['stage']
         self.http_client = HttpClient(config['api_key'])
         self.validator = Validation()
 
     def list_services(self):
-        path = f"/{self.stage}/services"
+        path = "services"
         request = HttpRequest("GET", self.base_url, path)
         return self.http_client.send(request)
   
@@ -21,7 +20,7 @@ class ServiceApi:
                 "The create_service method must be invoked with a non-empty string name argument."
             )
   
-        path = f"/{self.stage}/services"
+        path = "services"
         request = HttpRequest("POST", self.base_url, path, service_data)
         return self.http_client.send(request)
   
@@ -32,7 +31,7 @@ class ServiceApi:
                 "The delete_service method must be invoked with a non-empty string service_id argument."
             )
     
-        path = f"/{self.stage}/services/{service_id}"
+        path = f"services/{service_id}"
         request = HttpRequest("DELETE", self.base_url, path)
         return self.http_client.send(request)
   
@@ -43,6 +42,6 @@ class ServiceApi:
                 "The get_service method must be invoked with a non-empty string service_id argument."
             )
     
-        path = f"/{self.stage}/services/{service_id}"
+        path = f"services/{service_id}"
         request = HttpRequest("GET", self.base_url, path)
         return self.http_client.send(request)

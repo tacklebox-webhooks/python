@@ -5,7 +5,6 @@ from .http_client import HttpClient
 class MessageApi:
     def __init__(self, config):
         self.base_url = config['base_url']
-        self.stage = config['stage']
         self.http_client = HttpClient(config['api_key'])
         self.validator = Validation()
   
@@ -22,7 +21,7 @@ class MessageApi:
                 "The list_messages method must be invoked with a non-empty string user_id argument."
             )
     
-        path = f"/{self.stage}/services/{service_id}/users/{user_id}/messages"
+        path = f"services/{service_id}/users/{user_id}/messages"
         request = HttpRequest("GET", self.base_url, path)
         return self.http_client.send(request)
   
@@ -46,7 +45,7 @@ class MessageApi:
             )
         
     
-        path = f"/{self.stage}/services/{service_id}/users/{user_id}/messages/{message_id}/resend"
+        path = f"services/{service_id}/users/{user_id}/messages/{message_id}/resend"
         request = HttpRequest("POST", self.base_url, path)
         return self.http_client.send(request)
   
@@ -71,6 +70,6 @@ class MessageApi:
             )
         
     
-        path = f"/{self.stage}/services/{service_id}/users/{user_id}/messages/{message_id}"
+        path = f"services/{service_id}/users/{user_id}/messages/{message_id}"
         request = HttpRequest("GET", self.base_url, path)
         return self.http_client.send(request)

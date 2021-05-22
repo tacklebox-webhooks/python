@@ -5,7 +5,6 @@ from .http_client import HttpClient
 class UserApi:
     def __init__(self, config):
         self.base_url = config['base_url']
-        self.stage = config['stage']
         self.http_client = HttpClient(config['api_key'])
         self.validator = Validation()
 
@@ -22,7 +21,7 @@ class UserApi:
                 "The create_user method must be invoked with a non-empty string name argument."
             )
     
-        path = f"/{self.stage}/services/{service_id}/users"
+        path = f"services/{service_id}/users"
         request = HttpRequest("POST", self.base_url, path, user_data)
         return self.http_client.send(request)
   
@@ -39,7 +38,7 @@ class UserApi:
                 "The delete_user method must be invoked with a non-empty string user_id argument."
             )
     
-        path = f"/{self.stage}/services/{service_id}/users/{user_id}"
+        path = f"services/{service_id}/users/{user_id}"
         request = HttpRequest("DELETE", self.base_url, path)
         return self.http_client.send(request)
   
@@ -56,7 +55,7 @@ class UserApi:
                 "The get_user method must be invoked with a non-empty string user_id argument."
             )
     
-        path = f"/{self.stage}/services/{service_id}/users/{user_id}"
+        path = f"services/{service_id}/users/{user_id}"
         request = HttpRequest("GET", self.base_url, path)
         return self.http_client.send(request)
   
@@ -67,6 +66,6 @@ class UserApi:
                 "The list_users method must be invoked with a non-empty string service_id argument."
             )
     
-        path = f"/{self.stage}/services/{service_id}/users"
+        path = f"services/{service_id}/users"
         request = HttpRequest("GET", self.base_url, path)
         return self.http_client.send(request)

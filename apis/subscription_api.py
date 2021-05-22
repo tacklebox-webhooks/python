@@ -5,7 +5,6 @@ from .http_client import HttpClient
 class SubscriptionApi:
     def __init__(self, config):
         self.base_url = config['base_url']
-        self.stage = config['stage']
         self.http_client = HttpClient(config['api_key'])
         self.validator = Validation()
 
@@ -22,7 +21,7 @@ class SubscriptionApi:
                 "The list_subscriptions method must be invoked with a non-empty string user_id argument."
             )
         
-        path = f"/{self.stage}/services/{service_id}/users/{user_id}/subscriptions"
+        path = f"services/{service_id}/users/{user_id}/subscriptions"
         request = HttpRequest("GET", self.base_url, path)
         return self.http_client.send(request)
   
@@ -45,7 +44,7 @@ class SubscriptionApi:
                 "The create_subscription method must be invoked with non-empty url and event_types arguments."
             )
         
-        path = f"/{self.stage}/services/{service_id}/users/{user_id}/subscriptions"
+        path = f"services/{service_id}/users/{user_id}/subscriptions"
         request = HttpRequest("POST", self.base_url, path, subscription_data)
         return self.http_client.send(request)
     
@@ -68,7 +67,7 @@ class SubscriptionApi:
                 "The delete_subscription method must be invoked with a non-empty string subscription_id argument."
             )
     
-        path = f"/{self.stage}/services/{service_id}/users/{user_id}/subscriptions/{subscription_id}"
+        path = f"services/{service_id}/users/{user_id}/subscriptions/{subscription_id}"
         request = HttpRequest("DELETE", self.base_url, path)
         return self.http_client.send(request)
     
@@ -91,6 +90,6 @@ class SubscriptionApi:
                 "The get_subscription method must be invoked with a non-empty string subscription_id argument."
             )
     
-        path = f"/{self.stage}/services/{service_id}/users/{user_id}/subscriptions/{subscription_id}"
+        path = f"services/{service_id}/users/{user_id}/subscriptions/{subscription_id}"
         request = HttpRequest("GET", self.base_url, path)
         return self.http_client.send(request)

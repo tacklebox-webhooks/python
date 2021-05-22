@@ -5,7 +5,6 @@ from .http_client import HttpClient
 class EventApi:
     def __init__(self, config):
         self.base_url = config['base_url']
-        self.stage = config['stage']
         self.http_client = HttpClient(config['api_key'])
         self.validator = Validation()
   
@@ -22,7 +21,7 @@ class EventApi:
                 "The list_events method must be invoked with a non-empty string user_id argument."
             )
     
-        path = f"/{self.stage}/services/{service_id}/users/{user_id}/events"
+        path = f"services/{service_id}/users/{user_id}/events"
         request = HttpRequest("GET", self.base_url, path)
         return self.http_client.send(request)
   
@@ -45,7 +44,7 @@ class EventApi:
                 "The create_event method must be invoked with an event_data argument containing non-empty event_type and payload properties."
             )
     
-        path = f"/{self.stage}/services/{service_id}/users/{user_id}/events"
+        path = f"services/{service_id}/users/{user_id}/events"
         request = HttpRequest("POST", self.base_url, path, event_data)
         return self.http_client.send(request)
   
@@ -68,6 +67,6 @@ class EventApi:
                 "The get_event method must be invoked with a non-empty string event_id argument."
             )
     
-        path = f"/{self.stage}/services/{service_id}/users/{user_id}/events/{event_id}"
+        path = f"services/{service_id}/users/{user_id}/events/{event_id}"
         request = HttpRequest("GET", self.base_url, path)
         return self.http_client.send(request)
