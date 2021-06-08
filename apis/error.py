@@ -22,6 +22,9 @@ class Validation:
         return bool(data['name']) and isinstance(data['name'], str)
     
     def is_valid_subscription_data(self, data):
+        if data['eventTypes']:
+            data['event_types'] = data['eventTypes']
+        
         return (
             bool(data['url']) and
             isinstance(data['url'], str) and
@@ -30,6 +33,12 @@ class Validation:
         )
     
     def is_valid_event_data(self, data):
+        if data['eventType']:
+            data['event_type'] = data['eventType']
+        
+        if data['idempotencyKey']:
+            data['idempotency_key'] = data['idempotencyKey']
+        
         return (
             bool(data['event_type']) and
             isinstance(data['event_type'], str) and

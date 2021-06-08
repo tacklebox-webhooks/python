@@ -2,7 +2,7 @@ from setuptools import setup, find_namespace_packages
 
 setup(
     name='tacklebox_webhooks',
-    version='0.1.2',
+    version='0.1.3',
     description='An open-source serverless framework that offers webhooks as a service.',
     url='https://github.com/tacklebox-webhooks/python',
     author='Juan Palma, Kayl Thomas, Kevin Counihan, Armando Mota',

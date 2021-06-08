@@ -1,3 +1,7 @@
+=== 0.1.3 / 2021-06-08
+
+* Fixed bug related to JSON keys consistency
+
 === 0.1.2 / 2021-05-30
 
 * Updated README
